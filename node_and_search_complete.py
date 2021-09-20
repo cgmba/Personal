@@ -50,14 +50,22 @@ class RunningStats:
                f"Estimated effective branching factor: {self.branching_factor}\n" \
                "--------------------------------\n"
 
-    def save_to_file(self, filename: str) -> None:
+    
+    def save_to_file(self, filename: str, content: str) -> None:
         """Save the statistics in a file 
+
         Args:
             filename (str): the file for saving the statistics into 
-        """
-        with open(file=filename, mode="wb", encoding="utf-8") as file:
-            file.write(self.__str__())
 
+        Parameters
+        ----------
+        content other content to add
+        """
+        with open(file=filename, mode="w", encoding="utf-8") as file:
+            file.write(content)
+            file.write(self.__str__())
+            
+            
 class Node:
     """
     This class defines nodes in search trees. It keep track of:
@@ -126,7 +134,7 @@ class SearchAlgorithm:
         self.running_stats = None
         self.check_visited_nodes =check_visited
 
-    def bfs(self, statistics=False):
+    def bfs(self, statistics=True):
         start_time = time.process_time()
         frontier = queue.Queue()
         frontier.put(self.start)
@@ -158,7 +166,7 @@ class SearchAlgorithm:
                 while not successor.empty():
                     frontier.put(successor.get())
 
-
+    
     def dfs(self, statistics=False):
         visited = {}
         visited[str(self.start.state.state)] = True
@@ -197,17 +205,14 @@ class SearchAlgorithm:
                         visited[str(node.state.state)] = True
 
 
-    def statistics(self):
+    
+    def statistics(self) -> None:
         """
-        Informs the user about
-        - depth, d
-        - search cost (number of nodes generated)
-        - cost of solution (# of nodes from root to goal, N)
-        - cpu time
-        - effective branching factor (N^(1/d))
+         If statistics printing is enabled, print the statistics. Otherwise, nothing is printed.
         """
         if self.running_stats is not None:
-            print(self.running_stats)
-            
-            
+            msg = f"\n{33 * '>'}\nStatistics for {self.running_stats.algorithm.upper()} with check for explored nodes" \
+                  f" {'ENABLED' if self.check_visited_nodes else 'DISABLED'} {self.running_stats}"
+            print(msg)
+            self.running_stats.save_to_file("Assignment1-Report_Longho_Bernard_And_Mba_Godwin.txt", msg)
     
