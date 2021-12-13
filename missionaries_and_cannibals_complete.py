@@ -1,6 +1,7 @@
 '''
 Missionaries and Cannibal problem
-Author: Tony Lindgren
+
+
 '''
 from copy import deepcopy
 
@@ -47,7 +48,6 @@ class MissionariesAndCannibals:
         if boat == 'r':
             if (right_bank[0] - 2 == 0 or right_bank[0] - 2 >= right_bank[1]) \
                     and right_bank[0] >= 2 and left_bank[0] + 2 >= left_bank[1]:
-
                 right_bank[0] = right_bank[0] - 2
                 boat = 'l'
                 left_bank[0] = left_bank[0] + 2
