@@ -153,14 +153,14 @@ class SearchAlgorithm:
                     frontier.put(child_node)
         return None
 
-    """def a_star(self, statistics=False):
-        start_time = time.process_time() if statistics else None
+    def a_star(self, statistics=False):
+        """start_time = time.process_time() if statistics else None
         #frontier = PrioritizedItem.Queue()
         frontier = queue.PriorityQueue()
         #frontier = PriorityQueue()
         frontier.put(self.start)
         explored = [self.start.state]
-        #heuristics = [self.heuristics.start.state]
+        heuristics = [self.heuristics.start.state]
         stop = False
         while not stop:
             if frontier.empty():
@@ -185,8 +185,13 @@ class SearchAlgorithm:
                     if child_node.state not in explored:
                         frontier.put(child_node)
                 else:
-                    frontier.put(child_node)
-        return None"""
+                    frontier.put(child_node)"""
+        return self.bfs(statistics)
+        # path_cost = self.start.solution()
+        # heuristics = [self.start.heuristics]
+        # print(lambda node: node.path_cost + heuristics[node.state])
+        # return None
+        #return self, lambda node: node.path_cost + self.heuristics[node.state]
 
     def dfs(self, statistics=False):
         """Depth first search - Uses LIFO (Last-In First Out)
@@ -257,8 +262,8 @@ class SearchAlgorithm:
                 else:
                     frontier.append(child_node)
         return None """
-        #print (lambda node: self.heuristics[node.state])
-        return self, lambda node: self.heuristics[node.state]
+        print(lambda node: self.heuristics[node.state])
+        # return self, lambda node: self.heuristics[node.state]
 
     def dls(self, curr_node, limit):
         """Depth Limited Search. Uses LIFO queue 
