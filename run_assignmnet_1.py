@@ -71,26 +71,29 @@ def run_mm_cc(algorithm, print_stats=True, verbose_print=True, check_visited_nod
         sa.statistics()
 
     # elif algorithm.lower() == "a_star":  # ids
-    """print("A_STAR")
+    print("A_STAR")
     print('Start state: ')
     mc.pretty_print()
+    # goalNode = sa.a_star(statistics=print_stats)
     goal_node = sa.a_star(statistics=print_stats)
     goal_node.pretty_print_solution(verbose=verbose_print)
+    # goalNode.pretty_print_solution(verbose=verbose_print)
     print('goal state: ')
 
     goal_node.state.pretty_print()
     if print_stats:
-            sa.statistics()"""
+        sa.statistics()
 
     print("GFS")
     print('Start state: ')
     mc.pretty_print()
     # goal_node = sa.gfs(statistics=print_stats)
-    goalNode = sa.gfs(statistics=print_stats)
-    # goal_node.pretty_print_solution(verbose=verbose_print)
-    goalNode.pretty_print_solution(verbose=verbose_print)
-    print('goal state: ', goalNode.solution())
-    print("Path Cost: ", goalNode.path_cost)
+
+    # goalNode = sa.gfs(statistics=print_stats)
+    goal_node.pretty_print_solution(verbose=verbose_print)
+    # goalNode.pretty_print_solution(verbose=verbose_print)
+    print('goal state: ', goal_node.solution())
+    #print("Path Cost: ", goal_node.path_cost)
     # goal_node.state.pretty_print()
 
     if print_stats:
@@ -113,12 +116,14 @@ def main():
     run_mm_cc(algorithm="dfs", print_stats=True, verbose_print=True, check_visited_nodes=True)
     run_mm_cc(algorithm="ids", print_stats=True, verbose_print=True, check_visited_nodes=True)
     run_mm_cc(algorithm="gfs", print_stats=True, verbose_print=True, check_visited_nodes=True)
+    run_mm_cc(algorithm="a_star", print_stats=True, verbose_print=True, check_visited_nodes=True)
 
     # Not checking for explored nodes
     run_mm_cc(algorithm="bfs", print_stats=True, verbose_print=True, check_visited_nodes=False)
     run_mm_cc(algorithm="dfs", print_stats=True, verbose_print=True, check_visited_nodes=False)
     run_mm_cc(algorithm="ids", print_stats=True, verbose_print=True, check_visited_nodes=False)
     run_mm_cc(algorithm="gfs", print_stats=True, verbose_print=True, check_visited_nodes=False)
+    run_mm_cc(algorithm="a_star", print_stats=True, verbose_print=True, check_visited_nodes=False)
     # ids
 
     # a_star
