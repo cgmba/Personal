@@ -9,7 +9,7 @@ goal_state = [['e', 1, 2], [3, 4, 5], [6, 7, 8]]
 
 class EightPuzzleTestClass(EightPuzzle):
     """
-    This class is a wrapper for the EightPuzzle Class .
+    This class is a wrapper for the EightPuzzle Class
     It avoids specifying the goal state in every test.
     """
 
